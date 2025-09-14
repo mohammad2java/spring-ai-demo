@@ -182,6 +182,67 @@ curl http://localhost:11434/api/generate -d '{
 
 ---
 
+
+
+---
+
+## 📦 Spring AI Model Starters
+
+Spring AI provides **starter dependencies** for different model providers (Ollama, OpenAI, Anthropic, Vertex AI, etc.).
+These starters bring the correct configuration and clients into your Spring Boot project with minimal setup.
+
+> 📝 **Definition:**
+> `spring-ai-starter-model-<provider>` is a **modular dependency** that lets you switch between different LLM providers by just changing the `<provider>` name.
+> It works like a plug-and-play adapter for various LLM backends.
+
+---
+
+### 🔧 Generic Maven Dependency Syntax
+
+```xml
+<dependency>
+    <groupId>org.springframework.ai</groupId>
+    <artifactId>spring-ai-starter-model-<provider></artifactId>
+</dependency>
+```
+
+Where `<provider>` can be:
+
+| Provider Name      | Artifact Example                           | Use Case                           |
+| ------------------ | ------------------------------------------ | ---------------------------------- |
+| `ollama`           | `spring-ai-starter-model-ollama`           | Run local LLMs via Ollama runtime  |
+| `openai`           | `spring-ai-starter-model-openai`           | Connect to OpenAI GPT models       |
+| `azure-openai`     | `spring-ai-starter-model-azure-openai`     | Use Azure-hosted OpenAI models     |
+| `anthropic`        | `spring-ai-starter-model-anthropic`        | Connect to Claude models           |
+| `vertex-ai-gemini` | `spring-ai-starter-model-vertex-ai-gemini` | Use Google Vertex AI Gemini models |
+
+---
+
+✅ **Example:**
+
+For Ollama:
+
+```xml
+<dependency>
+    <groupId>org.springframework.ai</groupId>
+    <artifactId>spring-ai-starter-model-ollama</artifactId>
+</dependency>
+```
+
+For Anthropic claude:
+
+```xml
+<dependency>
+    <groupId>org.springframework.ai</groupId>
+    <artifactId>spring-ai-starter-model-anthropic</artifactId>
+</dependency>
+```
+
+---
+
+
+
+
 ## ⚠️ Troubleshooting
 
 * **Port in use** → Change Ollama port using:
