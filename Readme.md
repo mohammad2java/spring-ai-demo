@@ -42,27 +42,117 @@ flowchart LR
 
 ---
 
-## 🛠 Installation
+# 🖥️ Install Ollama Locally & Test with Postman
 
-### 1. Install Ollama
 
-```bash
-curl -fsSL https://ollama.ai/install.sh | sh
-```
+### **Windows**
 
-> On Windows, download the installer from [Ollama Download Page](https://ollama.ai/download).
+* Go to [Ollama Download Page](https://ollama.com/download)
+* Download the based on underlying OS.
+* Run the installer (it will add Ollama to your PATH)
 
-### 2. Verify Installation
+---
+
+## 2️⃣ Verify Installation
+
+Check version to confirm installation:
 
 ```bash
 ollama --version
 ```
 
-### 3. Pull a Model
+You should see something like:
+
+```
+ollama version 0.3.x
+```
+
+---
+
+## 3️⃣ Pull a Model
+
+Before you can run a model, you need to **download it** (just like `docker pull`):
 
 ```bash
 ollama pull gemma3:1b
 ```
+
+You can replace `gemma3:1b` with other models:
+
+* `llama3` – General purpose
+* `mistral` – Small + fast
+* `phi3` – Lightweight
+
+Check available models here → [Ollama Models](https://ollama.ai/library)
+
+---
+
+## 4️⃣ Run a Model Locally
+
+Run the model interactively in your terminal:
+
+```bash
+ollama run gemma3:1b
+```
+
+You can now type questions and see responses in real time.
+Exit with `Ctrl+C`.
+
+---
+
+## 5️⃣ Start Ollama API Server
+
+Normally Ollama starts automatically in the background, but you can force start:
+
+```bash
+ollama serve
+```
+
+This exposes a REST API at `http://localhost:11434`.
+
+---
+
+## 6️⃣ Test with Postman
+
+### **Step 1: Create New Request**
+
+* Method: **POST**
+* URL: `http://localhost:11434/api/generate`
+
+### **Step 2: Add Body**
+
+Go to **Body → raw → JSON** and paste:
+
+```json
+{
+  "model": "gemma3:1b",
+  "prompt": "Tell me a short joke in Hindi"
+}
+```
+
+### **Step 3: Send Request**
+
+You should get a JSON response like:
+
+```json
+{
+  "model": "gemma3:1b",
+  "created_at": "2025-09-14T12:34:56.789Z",
+  "response": "अध्यापक: बताओ सबसे तेज़ क्या होता है?\nबच्चा: फ्री वाई-फाई!"
+}
+```
+
+---
+
+## 7️⃣ Useful Ollama Commands
+
+| Command               | Description                     |
+| --------------------- | ------------------------------- |
+| `ollama list`         | Shows installed models          |
+| `ollama pull <model>` | Downloads a new model           |
+| `ollama run <model>`  | Runs model interactively        |
+| `ollama ps`           | Shows running models            |
+| `ollama serve`        | Starts REST API server manually |
 
 ---
 
