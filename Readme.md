@@ -22,7 +22,7 @@ Spring AI provides a simple, idiomatic way to connect to Ollama and send prompts
 flowchart LR
     A[Client Browser / Postman] -->|HTTP Request| B[Spring Boot App]
     B -->|Spring AI Abstraction| C[Ollama Runtime]
-    C -->|Runs Model| D[LLM (e.g., Gemma3, Llama3, Mistral)]
+    C -->|Runs Model| D["LLM (Gemma3 / Llama3 / Mistral)"]
     D -->|Response| C
     C --> B
     B -->|JSON/HTML Response| A
