@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/ollama")
 @RequiredArgsConstructor
-public class OllamaStreamController {
+public class OllamaApiController {
 
     private  final SpringAI springAI;
 
